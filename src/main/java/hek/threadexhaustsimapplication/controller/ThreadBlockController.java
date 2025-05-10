@@ -1,4 +1,4 @@
-package hek.threadexhaustsim.controller;
+package hek.threadexhaustsimapplication.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
