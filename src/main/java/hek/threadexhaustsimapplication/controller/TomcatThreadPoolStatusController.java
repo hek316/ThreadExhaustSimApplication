@@ -1,14 +1,22 @@
 package hek.threadexhaustsimapplication.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 @Slf4j
-public class ThreadBlockController {
+public class TomcatThreadPoolStatusController {
 
+    private final TomcatThreadPoolMonitor monitor;
+
+    @GetMapping("/tomcat/threadpool-status")
+    public String getThreadPoolStatus() {
+        return monitor.getStatus();
+    }
 
     @GetMapping("/block")
     public String block(@RequestParam(defaultValue = "10000") long millis) throws InterruptedException {
